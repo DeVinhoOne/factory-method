@@ -13,12 +13,10 @@ public class Demo {
     }
 
     static void configure() {
-        if (System.getProperty("os.name").equals("Windows 10")) {
-            dialog = new WindowsDialog();
-        } else if (System.getProperty("os.name").equals("Mac OS X")) {
-            dialog = new MacDialog();
-        } else {
-            dialog = new HtmlDialog();
+        switch (System.getProperty("os.name")) {
+            case "Windows 10" -> dialog = new WindowsDialog();
+            case "Mac OS X" -> dialog = new MacDialog();
+            default -> dialog = new HtmlDialog();
         }
     }
 
